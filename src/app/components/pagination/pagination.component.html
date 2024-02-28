@@ -1,0 +1,35 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      
+      @if (currentPage != 1) {
+        <li class="page-item">
+          <a class="page-link border border-primary" (click)="goPage(currentPage-1)">Previous</a>
+        </li>
+        @if (currentPage < 2) {
+          <li class="page-item">
+            <a class="page-link border border-primary {{ currentPage === 1 ? 'active' : '' }}" (click)="goPage(1)">1</a>
+          </li>
+        }
+        <li class="page-item">
+          <a class="page-link border border-primary {{ currentPage === currentPage+1 ? 'active' : '' }}" (click)="goPage(currentPage-1)">{{ currentPage-1 }} <span class="sr-only"></span></a>
+        </li>
+      }                
+      <li class="page-item">
+        <a class="page-link border border-primary active" >{{currentPage}}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link border border-primary {{ currentPage === currentPage+1 ? 'active' : '' }}" (click)="goPage(currentPage+1)">{{ currentPage+1 }} <span class="sr-only"></span></a>
+      </li>
+      <li class="page-item">
+        <a class="page-link border border-primary" (click)="goPage(currentPage+1)">Next</a>
+      </li>
+  
+      <li class="page-item">
+        <input class="page-link border border-primary" type="number" min="1" max="{{ totalPages }}" placeholder="{{currentPage}}" [(ngModel)]="pageNumber"> 
+      </li>
+      <li class="page-item">
+        <button class="page-link border border-primary" (click)="goToPageInput()">Go to Page</button>
+      </li>
+    </ul>
+  </nav>
+  
